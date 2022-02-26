@@ -19,6 +19,8 @@ public class Character : MonoBehaviour
     public float coolDown = 0.0f;
     public GameObject dash_effect;
 
+    public GameObject fire_ball;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,10 @@ public class Character : MonoBehaviour
                 //itemController.SetTargetPosition(item.transform);
                 //itemController.Pickup();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Home)) {
+            Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
     }
 
