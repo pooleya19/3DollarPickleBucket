@@ -8,7 +8,7 @@ public class FireBall : MonoBehaviour
     public float bulletSpeed = 10.0f;
     public float lifetime = 1.0f;
 
-    public GameObject dash_effect;
+    public GameObject explosion_effect;
 
     // Start is called before the first frame update
     void Start()
@@ -32,14 +32,14 @@ public class FireBall : MonoBehaviour
         lifetime -= Time.deltaTime;
 
         if (lifetime <= 0) {
-            Instantiate(dash_effect, transform.position, Quaternion.identity);
+            Instantiate(explosion_effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Instantiate(dash_effect, transform.position, Quaternion.identity);
+        Instantiate(explosion_effect, transform.position, Quaternion.identity);
         
         Destroy(gameObject);
     }
