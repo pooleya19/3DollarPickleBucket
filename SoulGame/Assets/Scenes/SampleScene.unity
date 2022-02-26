@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d2483a52f024f45aaf703998496828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: []
 --- !u!4 &1238791920
 Transform:
   m_ObjectHideFlags: 0
@@ -700,10 +701,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 5
-  pickupable: {fileID: 0}
+  pickupable: {fileID: 2039679850}
   dash_state: 0
   dashSpeed: 2
   preDashVelocity: {x: 0, y: 0}
   startDashTime: 0.2
   coolDown: 0
   dash_effect: {fileID: 6543099919568370379, guid: 872808a499f36eb479ed227030995709, type: 3}
+--- !u!1 &2039679850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2550656065677786778, guid: 6208ae01ad248654690cfdb57c8565ed, type: 3}
+  m_PrefabInstance: {fileID: 674947103}
+  m_PrefabAsset: {fileID: 0}
