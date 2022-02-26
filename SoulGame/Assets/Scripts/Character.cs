@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     float vertical;
 
     public DashState dash_state = DashState.Ready;
-    public float dashSpeed = 2.5f;
+    public float dashSpeed = 3.0f;
     public Vector2 preDashVelocity;
     private float dashTime;
     public float startDashTime = 0.2f;
