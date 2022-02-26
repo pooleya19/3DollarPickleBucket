@@ -2,18 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Action { USE, EQUIP, DROP }
+
 public class InventorySystem : MonoBehaviour
 {
     public static InventorySystem current;
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory;// {get; private set;}
 
+    public delegate void OnItemChanged(); //what
+    public OnItemChanged onItemChangedCallback;
+
+    #region Singleton
+    public static InventorySystem instance;
+
     private void Awake()
     {
         current = this;
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
+    #endregion
 
     public void Add(InventoryItemData referenceData)
     {
