@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: dashSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7373575984064065011, guid: aea8092769e460643acb2c4087ee341c, type: 3}
+      propertyPath: fire_ball
+      value: 
+      objectReference: {fileID: 722372598997664166, guid: 9bb99088f96a5044a85d18bcc49813f7, type: 3}
     - target: {fileID: 8010066674694296322, guid: aea8092769e460643acb2c4087ee341c, type: 3}
       propertyPath: m_Name
       value: Character

@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        //fire_ball = (GameObject)Resources.Load("Assets/Prefabs/Fireball.prefab");
         dashTime = startDashTime;
     }
 

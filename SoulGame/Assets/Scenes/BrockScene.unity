@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 73303497}
   - component: {fileID: 73303498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 303403057}
   - component: {fileID: 303403059}
   - component: {fileID: 303403058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 321793872}
   - component: {fileID: 321793871}
   - component: {fileID: 321793874}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -398,7 +398,9 @@ MonoBehaviour:
   preDashVelocity: {x: 0, y: 0}
   startDashTime: 0.2
   coolDown: 0
+  hasCoolDown: 1
   dash_effect: {fileID: 6543099919568370379, guid: 872808a499f36eb479ed227030995709, type: 3}
+  fire_ball: {fileID: 722372598997664166, guid: 9bb99088f96a5044a85d18bcc49813f7, type: 3}
 --- !u!50 &321793872
 Rigidbody2D:
   serializedVersion: 4
@@ -428,7 +430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321793870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.056968004, y: 0.2736752, z: -0.6249341}
+  m_LocalPosition: {x: 0.056968004, y: 0.2736752, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1281810928}
@@ -479,7 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1015926632}
   - component: {fileID: 1015926633}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +608,7 @@ GameObject:
   - component: {fileID: 1281810928}
   - component: {fileID: 1281810930}
   - component: {fileID: 1281810929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -796,7 +798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1456905778}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456905777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: 0, z: 0}
+  m_LocalPosition: {x: 0.41, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 73303497}
@@ -827,7 +829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1458840673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Soul Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
