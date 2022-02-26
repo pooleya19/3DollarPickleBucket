@@ -97,7 +97,8 @@ public class Character : MonoBehaviour
         {
             Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
-        if (Input.GetMouseButton(0))
+
+        if (Input.GetMouseButtonDown(0))
         {
             Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
