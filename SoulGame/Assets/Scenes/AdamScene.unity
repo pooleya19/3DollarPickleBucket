@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1539907018
+--- !u!1001 &831483275
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -174,38 +174,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3591039310085600616, guid: aea8092769e460643acb2c4087ee341c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591039310085600616, guid: aea8092769e460643acb2c4087ee341c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591039310085600616, guid: aea8092769e460643acb2c4087ee341c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285532083994293377, guid: aea8092769e460643acb2c4087ee341c, type: 3}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285532083994293377, guid: aea8092769e460643acb2c4087ee341c, type: 3}
-      propertyPath: m_Size.y
-      value: 0.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285532083994293377, guid: aea8092769e460643acb2c4087ee341c, type: 3}
-      propertyPath: m_EdgeRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7373575984064065011, guid: aea8092769e460643acb2c4087ee341c, type: 3}
-      propertyPath: dashSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7373575984064065011, guid: aea8092769e460643acb2c4087ee341c, type: 3}
-      propertyPath: fire_ball
-      value: 
-      objectReference: {fileID: 5470195683543155620, guid: f3f11033d2006f64b84b4f6bb1f9e402, type: 3}
     - target: {fileID: 8010066674694296322, guid: aea8092769e460643acb2c4087ee341c, type: 3}
       propertyPath: m_Name
       value: Character

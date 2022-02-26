@@ -486,7 +486,7 @@ MonoBehaviour:
   coolDown: 0
   hasCoolDown: 1
   dash_effect: {fileID: 6543099919568370379, guid: 872808a499f36eb479ed227030995709, type: 3}
-  fire_ball: {fileID: 0}
+  fire_ball: {fileID: 5470195683543155620, guid: f3f11033d2006f64b84b4f6bb1f9e402, type: 3}
 --- !u!61 &5285532083994293377
 BoxCollider2D:
   m_ObjectHideFlags: 0
