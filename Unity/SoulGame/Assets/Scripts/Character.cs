@@ -7,9 +7,12 @@ public class Character : MonoBehaviour
 
     public float runSpeed = 2.0f;
     public GameObject pickupable;
+    public GameObject nonEquipment;
     Rigidbody2D body;
     float horizontal;
     float vertical;
+    bool itemNotFound = true;
+    bool item2NotFound = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +29,27 @@ public class Character : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            pickupable.TryGetComponent<ItemObject>(out ItemObject item);
-            if((transform.position - item.transform.position).sqrMagnitude < 25.0f)
+            if (itemNotFound)
             {
-                item.OnHandlePickupItem();
-                //itemController.SetTargetPosition(item.transform);
-                //itemController.Pickup();
+                pickupable.TryGetComponent<ItemObject>(out ItemObject item);
+                if((transform.position - item.transform.position).sqrMagnitude < 4.0f)
+                {
+                    item.OnHandlePickupItem();
+                    //itemController.SetTargetPosition(item.transform);
+                    //itemController.Pickup();
+                    itemNotFound = false;
+                }
+            }
+            if (item2NotFound)
+            {
+                nonEquipment.TryGetComponent<ItemObject>(out ItemObject item2);
+                if((transform.position - item2.transform.position).sqrMagnitude < 4.0f)
+                {
+                    item2.OnHandlePickupItem();
+                    //itemController.SetTargetPosition(item.transform);
+                    //itemController.Pickup();
+                    item2NotFound = false;
+                }
             }
         }
     }
