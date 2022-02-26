@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
 
     public float runSpeed = 2.0f;
+    public GameObject pickupable;
     Rigidbody2D body;
     float horizontal;
     float vertical;
@@ -22,5 +23,16 @@ public class Character : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            pickupable.TryGetComponent<ItemObject>(out ItemObject item);
+            if((transform.position - item.transform.position).sqrMagnitude < 25.0f)
+            {
+                item.OnHandlePickupItem();
+                //itemController.SetTargetPosition(item.transform);
+                //itemController.Pickup();
+            }
+        }
     }
 }
