@@ -93,7 +93,12 @@ public class Character : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Home)) {
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            Instantiate(fire_ball, transform.position, Quaternion.identity);
+        }
+        if (Input.GetMouseButton(0))
+        {
             Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
     }
