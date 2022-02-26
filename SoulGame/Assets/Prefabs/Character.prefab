@@ -334,7 +334,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cc07823da1b379443b399be83c0a21b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16abd081917d70c4baa2b57ee160999a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -483,4 +483,6 @@ MonoBehaviour:
   preDashVelocity: {x: 0, y: 0}
   startDashTime: 0.2
   coolDown: 0
+  hasCoolDown: 1
   dash_effect: {fileID: 6543099919568370379, guid: 872808a499f36eb479ed227030995709, type: 3}
+  fire_ball: {fileID: 0}

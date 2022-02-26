@@ -14,7 +14,7 @@ public class FireBall : MonoBehaviour
     void Start()
     {
         Debug.Log("HAVE A TASTE OF MY FIREBALL!");
-    
+
         body = GetComponent<Rigidbody2D>();
 
         Vector2 mouse = Input.mousePosition;
@@ -31,16 +31,18 @@ public class FireBall : MonoBehaviour
     {
         lifetime -= Time.deltaTime;
 
-        if (lifetime <= 0) {
-            Instantiate(dash_effect, transform.position, Quaternion.identity);
+        if (lifetime <= 0)
+        {
+            GameObject effectGO = Instantiate(dash_effect, transform.position, Quaternion.identity);
+            effectGO.transform.localScale = transform.localScale;
             Destroy(gameObject);
         }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Instantiate(dash_effect, transform.position, Quaternion.identity);
-        
+        GameObject effectGO = Instantiate(dash_effect, transform.position, Quaternion.identity);
+        effectGO.transform.localScale = transform.localScale;
         Destroy(gameObject);
     }
 

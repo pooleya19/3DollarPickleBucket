@@ -101,6 +101,11 @@ public class Character : MonoBehaviour
         {
             Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
+        if (Input.GetMouseButton(1))
+        {
+            GameObject projectile = Instantiate(fire_ball, transform.position, Quaternion.identity);
+            projectile.transform.localScale = new Vector3(3, 3, 1);
+        }
     }
 
     public enum DashState
