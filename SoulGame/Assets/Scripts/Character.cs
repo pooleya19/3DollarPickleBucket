@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
             dash_state = DashState.Ready;
         }
         
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && body.velocity != Vector2.zero)
         {   
             if (dash_state == DashState.Ready) {
                 Instantiate(dash_effect, transform.position, Quaternion.identity);
