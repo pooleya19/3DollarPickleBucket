@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     float vertical;
 
     public DashState dash_state = DashState.Ready;
-    public float dashSpeed = 2.5f;
+    public float dashSpeed = 3.0f;
     public Vector2 preDashVelocity;
     private float dashTime;
     public float startDashTime = 0.2f;
@@ -97,7 +97,8 @@ public class Character : MonoBehaviour
         {
             Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
-        if (Input.GetMouseButton(0))
+
+        if (Input.GetMouseButtonDown(0))
         {
             Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
