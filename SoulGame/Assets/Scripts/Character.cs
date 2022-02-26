@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     private float dashTime;
     public float startDashTime = 0.2f;
     public float coolDown = 0.0f;
+    public bool hasCoolDown = true;
     public GameObject dash_effect;
 
     public GameObject fire_ball;
@@ -31,33 +32,50 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (coolDown > 0) {
+        if (coolDown > 0)
+        {
             coolDown -= Time.deltaTime;
-        } else if (coolDown <= 0 && dash_state == DashState.Cooldown) {
+        }
+        else if (coolDown <= 0 && dash_state == DashState.Cooldown)
+        {
             coolDown = 0.0f;
             dash_state = DashState.Ready;
         }
-        
+
+        if (!hasCoolDown && Input.GetKey(KeyCode.LeftShift))
+        {
+            Instantiate(dash_effect, transform.position, Quaternion.identity);
+            preDashVelocity = body.velocity;
+            dash_state = DashState.Dashing;
+        }
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && body.velocity != Vector2.zero)
-        {   
-            if (dash_state == DashState.Ready) {
+        {
+            if (dash_state == DashState.Ready)
+            {
                 Instantiate(dash_effect, transform.position, Quaternion.identity);
                 preDashVelocity = body.velocity;
                 dash_state = DashState.Dashing;
             }
         }
 
-        if (dash_state == DashState.Dashing) {
-            if (dashTime <= 0) {
+        if (dash_state == DashState.Dashing)
+        {
+            if (dashTime <= 0)
+            {
                 dashTime = startDashTime;
                 coolDown = 0.3f;
                 dash_state = DashState.Cooldown;
-            } else {
+            }
+            else
+            {
                 dashTime -= Time.deltaTime;
-            
+
                 body.velocity = preDashVelocity * dashSpeed;
             }
-        } else {
+        }
+        else
+        {
             horizontal = Input.GetAxisRaw("Horizontal");
             vertical = Input.GetAxisRaw("Vertical");
             body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
@@ -66,7 +84,7 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             pickupable.TryGetComponent<ItemObject>(out ItemObject item);
-            if((transform.position - item.transform.position).sqrMagnitude < 25.0f)
+            if ((transform.position - item.transform.position).sqrMagnitude < 25.0f)
             {
                 item.OnHandlePickupItem();
                 //itemController.SetTargetPosition(item.transform);
@@ -79,7 +97,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public enum DashState 
+    public enum DashState
     {
         Ready,
         Dashing,
