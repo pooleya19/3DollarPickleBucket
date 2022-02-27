@@ -7,18 +7,18 @@ using System;
 public class StatsChar : ScriptableObject
 {
     public string charName = "Steve";
-    public int baseMaxHP = 69;
-    public int baseATK = 69;
-    public int baseDEF = 69;
-    public int baseSPD = 69;
-    public int baseLuck = 69;
+    public float baseMaxHP = 69;
+    public float baseATK = 69;
+    public float baseDEF = 69;
+    public float baseSPD = 69;
+    public float baseLuck = 69;
 
-    public int maxHP = 79;
-    public int ATK = 79;
-    public int DEF = 79;
-    public int SPD = 79;
-    public int Luck = 79;
-    public int HP = 79;
+    public float maxHP = 79;
+    public float ATK = 79;
+    public float DEF = 79;
+    public float SPD = 79;
+    public float Luck = 79;
+    public float HP = 79;
 
     //Maybe not
     /*

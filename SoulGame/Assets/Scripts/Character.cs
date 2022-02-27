@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 
@@ -24,6 +25,13 @@ public class Character : MonoBehaviour
     public float coolDown = 0.0f;
     public bool hasCoolDown = true;
     public GameObject dash_effect;
+    
+    public enum DashState
+    {
+        Ready,
+        Dashing,
+        Cooldown
+    }
 
     public GameObject fire_ball;
     public GameObject statsMenu;
@@ -32,12 +40,23 @@ public class Character : MonoBehaviour
     public List<TextMeshProUGUI> fields;
     public List<GameObject> nonStartupLists;
 
+    AudioSource audioData;
+
+    public LayerMask targetMask;
+    public LayerMask blockMask;
+
+    public float radius = 4.0f;
+    [Range(0, 360)]
+    public float angle;
+
+    public Image healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
         //Initialize Stats Each Run
         currPlayerStatus.charName = "Steve";
-        currPlayerStatus.baseMaxHP = 10;
+        currPlayerStatus.baseMaxHP = 100;
         currPlayerStatus.baseATK = 10;
         currPlayerStatus.baseDEF = 10;
         currPlayerStatus.baseSPD = 10;
@@ -48,7 +67,7 @@ public class Character : MonoBehaviour
         currPlayerStatus.DEF = 10;
         currPlayerStatus.SPD = 10;
         currPlayerStatus.Luck = 10;
-        currPlayerStatus.HP = 10;
+        currPlayerStatus.HP = 100;
 
 
         statsMenu.gameObject.SetActive(false);
@@ -57,6 +76,16 @@ public class Character : MonoBehaviour
             currList.gameObject.SetActive(false);
         }
         menuIsOn = false;
+        // statsMenu.gameObject.SetActive(false);
+        // optionMenu.gameObject.SetActive(false);
+        // foreach (GameObject currList in nonStartupLists) {
+        //     currList.gameObject.SetActive(false);
+        // }
+        // menuIsOn = false;
+
+        audioData = GetComponent<AudioSource>();
+        //audioData.Play(0);
+
         body = GetComponent<Rigidbody2D>();
         //fire_ball = (GameObject)Resources.Load("Assets/Prefabs/Fireball.prefab");
         dashTime = startDashTime;
@@ -65,6 +94,8 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(currPlayerStatus.HP);
+        
         if (coolDown > 0)
         {
             coolDown -= Time.deltaTime;
@@ -154,15 +185,30 @@ public class Character : MonoBehaviour
             Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
 
+        if (Input.GetKeyDown(KeyCode.J)) {
+            Debug.Log("Attack");
+
+            Collider2D[] enemiesHit = FieldOfViewCheck();
+
+            Debug.Log(enemiesHit.Length);
+            foreach (Collider2D i in enemiesHit) {
+                Debug.Log(i);
+
+                Destroy(i.gameObject);
+            }
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(fire_ball, transform.position, Quaternion.identity);
         }
+
         if (Input.GetMouseButton(1))
         {
             GameObject projectile = Instantiate(fire_ball, transform.position, Quaternion.identity);
             projectile.transform.localScale = new Vector3(3, 3, 1);
         }
+
         if (Input.GetKeyDown("i"))
         {
             Debug.Log("i was pressed");
@@ -207,10 +253,74 @@ public class Character : MonoBehaviour
         }
     }
 
-    public enum DashState
+    private Collider2D[] FieldOfViewCheck() {
+        Collider2D[] rangeChecks = Physics2D.OverlapCircleAll(transform.position, radius, targetMask);
+        List<Collider2D> enemiesHit = new List<Collider2D>();
+
+        Debug.Log(rangeChecks.Length);
+
+        for (int i = 0; i < rangeChecks.Length; i++) {
+            Transform target = rangeChecks[i].transform;
+            Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+            if (Vector2.Angle(transform.up, directionToTarget) < angle / 2) {
+                float distanceToTarget = Vector2.Distance(transform.position, target.position);
+
+                if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, blockMask)) {
+                    enemiesHit.Add(rangeChecks[i]);
+                }
+            }
+        }
+
+        return enemiesHit.ToArray();
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
     {
-        Ready,
-        Dashing,
-        Cooldown
+        audioData.Play(0);
+
+        if (col.gameObject.CompareTag("Enemy")) {
+            Debug.Log("Hit Enemy");
+
+            GameObject hitEnemy = col.gameObject;
+            EnemyBehavior enemyData = hitEnemy.GetComponent<EnemyBehavior>();
+            
+            receiveDamage(enemyData.ATK);
+        }
+    }
+    
+    private void receiveDamage(float damage) {
+        currPlayerStatus.HP -= damage;
+
+        healthBar.fillAmount = Mathf.Clamp(currPlayerStatus.HP / currPlayerStatus.baseMaxHP, 0, 1f);
+
+        if (currPlayerStatus.HP <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.white;
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
+
+        Vector3 angle01 = DirectionFromAngle(-transform.eulerAngles.z, -angle/2);
+        Vector3 angle02 = DirectionFromAngle(-transform.eulerAngles.z, angle/2);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + angle01 * radius);
+        Gizmos.DrawLine(transform.position, transform.position + angle02 * radius);
+
+        // if (canSeePlayer) {
+        //     Gizmos.color = Color.green;
+        //     Gizmos.DrawLine(transform.position, playerTransform.position);
+        // }
+    }
+
+    private Vector2 DirectionFromAngle(float eulerY, float angleInDegrees)
+    {
+        angleInDegrees += eulerY;
+
+        return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }

@@ -18,10 +18,10 @@ public class RedEnemy : EnemyBehavior
 
     SpriteRenderer spriteRenderer;
 
-    public float HP;
-    public float ATK;
-    public float MVSP;
-    public float ATKSP;
+    // public float HP;
+    // public float ATK;
+    // public float MVSP;
+    // public float ATKSP;
 
     float currentScale = 1.0f;
 
@@ -83,7 +83,7 @@ public class RedEnemy : EnemyBehavior
         float currentTime = Time.time;
         if (currentTime - lastIdleFidgetTime > idleFidgetDelay)
         {
-            Debug.Log("New Fidget");
+            //Debug.Log("New Fidget");
             lastIdleFidgetTime = currentTime;
             idleFidgetDelay = Random.Range(idleFidgetDelayRange.x, idleFidgetDelayRange.y);
             Vector2 nextFidgetDirection = Random.insideUnitCircle;

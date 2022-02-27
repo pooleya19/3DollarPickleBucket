@@ -9,6 +9,11 @@ public abstract class EnemyBehavior : MonoBehaviour
     public Vector2 MVSPRange;
     public Vector2 ATKSPRange;
 
+    public float HP;
+    public float ATK;
+    public float MVSP;
+    public float ATKSP;
+
     protected Vector2 spawnPoint;
 
     protected GameObject player;
@@ -22,6 +27,8 @@ public abstract class EnemyBehavior : MonoBehaviour
         HIGH_ALERT,
         PURSUE,
         ATTACK,
+        ATTACKING,
+        COOLDOWN,
         CHARGE
     }
 
