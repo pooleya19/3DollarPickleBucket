@@ -94,6 +94,10 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         //Debug.Log(currPlayerStatus.HP);
         
         if (coolDown > 0)

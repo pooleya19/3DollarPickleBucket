@@ -8,7 +8,7 @@ public class Blehnemy : EnemyBehavior
     public float chargeTimer = 3.0f;
     public float attackTimer = 0.5f;
     
-    public float rangeAttackPlayer = 4.0f;
+    public float rangeAttackPlayer = 2.0f;
     public float rangeFindPlayer = 2.0f;
     public float rangeLosePlayer = 4.0f;
 
