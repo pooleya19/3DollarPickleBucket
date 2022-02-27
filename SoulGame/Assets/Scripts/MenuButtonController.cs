@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class MenuButtonController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public virtual void OnEnable() 
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // This method is supposed to be overridden
+        // in child classes that inherit from this class 
     }
 }

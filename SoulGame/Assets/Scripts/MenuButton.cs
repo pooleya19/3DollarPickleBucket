@@ -11,9 +11,9 @@ public class MenuButton : MonoBehaviour
  
     [Header("Equip Assignment")]
     public bool isEquipmentAssigned = false;
-    public EquipType equipType;
-    public Item equipItem;
-    public ItemAction action;
+    //public EquipType equipType;
+    public InventoryItemData equipItem;
+    //public ItemAction action;
  
     void Update()
     {
