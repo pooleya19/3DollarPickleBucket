@@ -9,8 +9,10 @@ public abstract class EnemyBehavior : MonoBehaviour
     public Vector2 MVSPRange;
     public Vector2 ATKSPRange;
 
-    private Vector2 spawnPoint;
-    public float IDLERange;
+    public Vector2 spawnPoint;
+
+    public GameObject player;
+    public Transform playerTransform;
 
     public enum EnemyState
     {
@@ -20,11 +22,14 @@ public abstract class EnemyBehavior : MonoBehaviour
     void Start()
     {
         spawnPoint = new Vector2(transform.position.x, transform.position.y);
+        player = GameObject.FindGameObjectWithTag("Player");
+        action_START();
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerTransform = player.transform;
         EnemyState state = getState();
         switch (state)
         {
@@ -40,6 +45,7 @@ public abstract class EnemyBehavior : MonoBehaviour
         }
     }
 
+    public abstract void action_START();
     public abstract EnemyState getState();
     public abstract void action_IDLE();
     public abstract void action_PURSUE();
