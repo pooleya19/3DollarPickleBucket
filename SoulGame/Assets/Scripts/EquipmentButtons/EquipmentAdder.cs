@@ -8,6 +8,7 @@ public class EquipmentAdder : MonoBehaviour
 {
     public InventorySystem currInventorySystem;
     public List<TextMeshProUGUI> fields;
+    bool selecting = false;
 
     private void OnEnable() {
 
@@ -21,6 +22,24 @@ public class EquipmentAdder : MonoBehaviour
                 fields[currInventorySlot].text = temp.data.displayName;
                 ++currInventorySlot;
             }
+        }
+    }
+
+    public void ClickSelect(int index)
+    {
+        int invPos = index;
+        selecting = true;
+    }
+
+    public void ClickEquipment(int equip)
+    {
+        if (selecting) 
+        {
+            
+        }
+        else
+        {
+
         }
     }
 }
