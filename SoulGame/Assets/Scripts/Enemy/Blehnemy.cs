@@ -252,7 +252,7 @@ public class Blehnemy : EnemyBehavior
             canSeePlayer = false;
         }
     }
-
+/*
     private void OnDrawGizmos() {
         Gizmos.color = Color.white;
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
@@ -269,7 +269,7 @@ public class Blehnemy : EnemyBehavior
             Gizmos.DrawLine(transform.position, playerTransform.position);
         }
     }
-
+*/
     private Vector2 DirectionFromAngle(float eulerY, float angleInDegrees)
     {
         angleInDegrees += eulerY;

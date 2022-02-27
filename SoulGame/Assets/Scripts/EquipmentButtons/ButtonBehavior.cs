@@ -38,6 +38,7 @@ public class ButtonBehavior : MonoBehaviour
     }
 
     public void Unequip() {
-        Debug.Log("Equip");
+        Debug.Log("Exiting");
+        Application.Quit();
     }
 }

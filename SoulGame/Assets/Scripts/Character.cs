@@ -299,7 +299,7 @@ public class Character : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+/*
     private void OnDrawGizmos() {
         Gizmos.color = Color.white;
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
@@ -316,7 +316,7 @@ public class Character : MonoBehaviour
         //     Gizmos.DrawLine(transform.position, playerTransform.position);
         // }
     }
-
+*/
     private Vector2 DirectionFromAngle(float eulerY, float angleInDegrees)
     {
         angleInDegrees += eulerY;
