@@ -43,6 +43,6 @@ public class StatusManager : MonoBehaviour
             playerStatus.ATK -= newItem.atkModifier;
             playerStatus.SPD -= newItem.spdModifier;
         }
-        onStatusChangedCallback.Invoke();
+        //onStatusChangedCallback.Invoke();
     }
 }

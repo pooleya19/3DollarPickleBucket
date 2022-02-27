@@ -54,14 +54,16 @@ public class EquipmentManager : MonoBehaviour
 
     public void Equip(Equipment newItem, int index)
     {
+        Debug.Log("Equipping");
         int currLength = currentEquipment.Length;
-        if (currLength >= numOfSouls)
+        if (currentEquipment[index] != null)
         {
             //Application.Quit();
-            Debug.Log("Maximum number of souls has been reached");
+            Debug.Log("There is an item in this slot");
         }
         else
         { //FIXME: Verify
+            Debug.Log("adding equipment to index: " + index);
             currentEquipment[index] = newItem;
 
             StatusManager.instance.UpdateCharacterStatus(newItem, true);

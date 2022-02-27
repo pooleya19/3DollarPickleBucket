@@ -12,6 +12,7 @@ public class EquipmentAdder : MonoBehaviour
     public List<TextMeshProUGUI> soulFields;
     bool selecting = false;
     int inventoryPosition;
+    public Character currCharacter;
 
     private void OnEnable() {
 
@@ -59,6 +60,7 @@ public class EquipmentAdder : MonoBehaviour
             InventoryItemData currItem = inventoryItems[inventoryPosition].data;
 
             //Add it to equipment
+            //FIXME: make sure to check if there is an equipment there
             currEquipManager.Equip((Equipment) currItem, equip);
 
             //Remove it from items
@@ -99,6 +101,8 @@ public class EquipmentAdder : MonoBehaviour
                     ++currentEquipSlot;
                 }
             }
+
+            currCharacter.UpdateCharacterStatus();
             Debug.Log("Finished Moving");
         }
         else

@@ -35,6 +35,22 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Initialize Stats Each Run
+        currPlayerStatus.charName = "Steve";
+        currPlayerStatus.baseMaxHP = 10;
+        currPlayerStatus.baseATK = 10;
+        currPlayerStatus.baseDEF = 10;
+        currPlayerStatus.baseSPD = 10;
+        currPlayerStatus.baseLuck = 10;
+
+        currPlayerStatus.maxHP = 10;
+        currPlayerStatus.ATK = 10;
+        currPlayerStatus.DEF = 10;
+        currPlayerStatus.SPD = 10;
+        currPlayerStatus.Luck = 10;
+        currPlayerStatus.HP = 10;
+
+
         statsMenu.gameObject.SetActive(false);
         optionMenu.gameObject.SetActive(false);
         foreach (GameObject currList in nonStartupLists) {
@@ -177,6 +193,17 @@ public class Character : MonoBehaviour
                 optionMenu.gameObject.SetActive(true);
                 menuIsOn = true;
             }
+        }
+    }
+
+    public void UpdateCharacterStatus()
+    {
+        Type fieldsType = typeof(StatsChar);
+
+        foreach (TextMeshProUGUI field in fields)
+        {
+            string value = fieldsType.GetField(field.name).GetValue(StatusManager.instance.playerStatus).ToString();
+            field.text = value;       
         }
     }
 
