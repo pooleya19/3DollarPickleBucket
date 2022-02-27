@@ -20,4 +20,22 @@ public class StatsChar : ScriptableObject
     public int Luck = 79;
     public int HP = 79;
 
+    //Maybe not
+    /*
+    public List<TextMeshProUGUI> fields;
+
+    void UpdateFields()
+    {
+        Type fieldsType = typeof(StatsChar);
+ 
+        foreach (TextMeshProUGUI field in fields)
+        {
+            string value = fieldsType.GetField(field.name).GetValue(StatusManager.instance.playerStatus).ToString();
+            Debug.Log("field type" + field.name);
+            Debug.Log("field " + field.name);
+            Debug.Log("value: " + value);
+            field.text = value;       
+        }
+    }
+    */
 }

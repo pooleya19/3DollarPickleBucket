@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 
 public class Character : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class Character : MonoBehaviour
     public GameObject statsMenu;
     public GameObject soulsMenu;
     public StatsChar currPlayerStatus;
+    public List<TextMeshProUGUI> fields;
 
     // Start is called before the first frame update
     void Start()
@@ -151,7 +154,17 @@ public class Character : MonoBehaviour
             }
             else if (!menuIsOn)
             {
-                
+                Type fieldsType = typeof(StatsChar);
+
+                foreach (TextMeshProUGUI field in fields)
+                {
+                    string value = fieldsType.GetField(field.name).GetValue(StatusManager.instance.playerStatus).ToString();
+                    Debug.Log("field type" + field.name);
+                    Debug.Log("field " + field.name);
+                    Debug.Log("value: " + value);
+                    field.text = value;       
+                }
+
                 statsMenu.gameObject.SetActive(true);
                 soulsMenu.gameObject.SetActive(true);
                 menuIsOn = true;
