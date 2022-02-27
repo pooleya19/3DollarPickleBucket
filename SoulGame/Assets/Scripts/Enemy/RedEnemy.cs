@@ -23,6 +23,8 @@ public class RedEnemy : EnemyBehavior
     public float MVSP;
     public float ATKSP;
 
+    float currentScale = 1.0f;
+
     public override void action_START()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -71,6 +73,11 @@ public class RedEnemy : EnemyBehavior
 
     public override void action_IDLE()
     {
+        if (currentScale > 1.0f)
+        {
+            currentScale -= 0.01f;
+            transform.localScale = new Vector3(currentScale, currentScale, 1);
+        }
 
         Vector2 position = new Vector2(playerTransform.position.x, playerTransform.position.y);
         float currentTime = Time.time;
@@ -104,6 +111,8 @@ public class RedEnemy : EnemyBehavior
 
     public override void action_ATTACK()
     {
+        currentScale += 0.01f;
+        transform.localScale = new Vector3(currentScale, currentScale, 1);
         spriteRenderer.color = Color.HSVToRGB(0, 1.0f, 0.67f);
         //Debug.Log("ATTACK");
     }
