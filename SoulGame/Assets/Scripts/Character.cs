@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     public GameObject fire_ball;
     public GameObject statsMenu;
     public GameObject soulsMenu;
+    public StatsChar currPlayerStatus;
 
     // Start is called before the first frame update
     void Start()
@@ -150,6 +151,7 @@ public class Character : MonoBehaviour
             }
             else if (!menuIsOn)
             {
+                
                 statsMenu.gameObject.SetActive(true);
                 soulsMenu.gameObject.SetActive(true);
                 menuIsOn = true;
