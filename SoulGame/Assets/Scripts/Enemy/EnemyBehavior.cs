@@ -18,7 +18,11 @@ public abstract class EnemyBehavior : MonoBehaviour
 
     public enum EnemyState
     {
-        IDLE, PURSUE, ATTACK
+        IDLE,
+        HIGH_ALERT,
+        PURSUE,
+        ATTACK,
+        CHARGE
     }
 
     void Start()
@@ -38,6 +42,9 @@ public abstract class EnemyBehavior : MonoBehaviour
             case (EnemyState.IDLE):
                 action_IDLE();
                 break;
+            case (EnemyState.HIGH_ALERT):
+                action_IDLE();
+                break;
             case (EnemyState.PURSUE):
                 action_PURSUE();
                 break;
@@ -51,5 +58,6 @@ public abstract class EnemyBehavior : MonoBehaviour
     public abstract EnemyState getState();
     public abstract void action_IDLE();
     public abstract void action_PURSUE();
+    public abstract void action_LOSTPLAYER();
     public abstract void action_ATTACK();
 }

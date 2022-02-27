@@ -45,7 +45,7 @@ public class RedEnemy : EnemyBehavior
         Vector2 playerPosition = new Vector2(playerTransform.position.x, playerTransform.position.y);
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
         float distance = Vector2.Distance(position, playerPosition);
-        //Debug.Log("Distance to Player: " + distance.ToString());
+
         if (distance <= rangeAttackPlayer)
         {
             return EnemyState.ATTACK;
@@ -72,11 +72,11 @@ public class RedEnemy : EnemyBehavior
     public override void action_IDLE()
     {
 
-        Vector2 position = new Vector2(transform.position.x, transform.position.y);
+        Vector2 position = new Vector2(playerTransform.position.x, playerTransform.position.y);
         float currentTime = Time.time;
         if (currentTime - lastIdleFidgetTime > idleFidgetDelay)
         {
-            Debug.Log("New Fidget");
+            //Debug.Log("New Fidget");
             lastIdleFidgetTime = currentTime;
             idleFidgetDelay = Random.Range(idleFidgetDelayRange.x, idleFidgetDelayRange.y);
             Vector2 nextFidgetDirection = Random.insideUnitCircle;
@@ -92,20 +92,20 @@ public class RedEnemy : EnemyBehavior
     public override void action_PURSUE()
     {
         spriteRenderer.color = Color.HSVToRGB(0, 0.7f, 0.67f);
-        Debug.Log("PURSUE");
+        //Debug.Log("PURSUE");
         targetPosition = playerTransform.position;
         moveToTargetPosition();
     }
 
-    public void action_LOSTPLAYER()
+    public override void action_LOSTPLAYER()
     {
-        spawnPoint = new Vector2(transform.position.x, transform.position.y);
+        spawnPoint = new Vector2(playerTransform.position.x, playerTransform.position.y);
     }
 
     public override void action_ATTACK()
     {
         spriteRenderer.color = Color.HSVToRGB(0, 1.0f, 0.67f);
-        Debug.Log("ATTACK");
+        //Debug.Log("ATTACK");
     }
 
     void moveToTargetPosition()
@@ -116,13 +116,14 @@ public class RedEnemy : EnemyBehavior
         {
             toTargetPosition.Normalize();
             GetComponent<Rigidbody2D>().velocity = toTargetPosition * MVSP;
+            transform.up = GetComponent<Rigidbody2D>().velocity;
             Debug.DrawLine(position, targetPosition, Color.cyan);
-            Debug.Log(position.ToString() + ", " + targetPosition.ToString());
+            //Debug.Log(position.ToString() + ", " + targetPosition.ToString());
         }
         else
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            Debug.Log("Happy");
+            //Debug.Log("Happy");
         }
     }
 }

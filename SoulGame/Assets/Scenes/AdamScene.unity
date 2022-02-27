@@ -215,7 +215,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &160525453
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160525449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.88, y: -0.42, z: 0}
+  m_LocalPosition: {x: 2.27, y: 2.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -294,11 +294,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3072130263154176116, guid: aea8092769e460643acb2c4087ee341c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 3072130263154176116, guid: aea8092769e460643acb2c4087ee341c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.6400003
       objectReference: {fileID: 0}
     - target: {fileID: 3072130263154176116, guid: aea8092769e460643acb2c4087ee341c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2735,8 +2735,19 @@ MonoBehaviour:
   ATKRange: {x: 0, y: 0}
   MVSPRange: {x: 0, y: 0}
   ATKSPRange: {x: 0, y: 0}
+  highAlertTimer: 5
+  rangeAttackPlayer: 1
+  rangeFindPlayer: 2
+  rangeLosePlayer: 4
+  idleFidgetDelayRange: {x: 1, y: 8}
+  idleFidgetDistanceRange: {x: 0, y: 2}
+  minFidgetThreshold: 0.1
+  HP: 0
+  ATK: 0
+  MVSP: 0
+  ATKSP: 0
   radius: 4
-  angle: 95
+  angle: 180
   targetMask:
     serializedVersion: 2
     m_Bits: 64
@@ -2790,7 +2801,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1777566828
 SpriteRenderer:
   m_ObjectHideFlags: 0
