@@ -577,6 +577,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Logan's Character
       objectReference: {fileID: 0}
+    - target: {fileID: 7344823031710142380, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1912832551}
     - target: {fileID: 8034852575961603215, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ClickSelect

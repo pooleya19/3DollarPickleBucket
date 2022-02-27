@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: InventoryItem_GreenSoul
   displayName: Green Soul
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 07f2dbb7eb8fb4b43b963b0b9c15bd8f, type: 3}
+  color: {r: 0.16666675, g: 1, b: 0, a: 1}
   atkModifier: 21
   defModifier: 41
   hpModifier: 532

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: InventoryItem_BlueSoul
   displayName: Blue Soul
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 07f2dbb7eb8fb4b43b963b0b9c15bd8f, type: 3}
+  color: {r: 0, g: 0.23333359, b: 1, a: 1}
   atkModifier: 1
   defModifier: 1
   hpModifier: 1
