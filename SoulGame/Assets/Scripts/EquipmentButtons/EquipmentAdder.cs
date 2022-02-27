@@ -29,12 +29,14 @@ public class EquipmentAdder : MonoBehaviour
 
     public void ClickSelect(int index)
     {
+        Debug.Log("Selected: " + index);
         inventoryPosition = index;
         selecting = true;
     }
 
     public void ClickEquipment(int equip)
     {
+        Debug.Log("Equipping to: " + equip);
         if (selecting) 
         { 
             //Get the current item
