@@ -23,6 +23,9 @@ public class StatusManager : MonoBehaviour
     }
  
     #endregion
+
+    public delegate void OnStatusChangedCallback();
+    public OnStatusChangedCallback onStatusChangedCallback;
  
     public void UpdateCharacterStatus(Equipment newItem, bool equipping)
     {
@@ -40,5 +43,6 @@ public class StatusManager : MonoBehaviour
             playerStatus.ATK -= newItem.atkModifier;
             playerStatus.SPD -= newItem.spdModifier;
         }
+        onStatusChangedCallback.Invoke();
     }
 }
