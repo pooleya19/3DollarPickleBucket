@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MenuButtonItemMenuController : MenuButtonController
 {
+    /*
     [SerializeField] GameObject menuItemPrefab;
  
     public override void OnEnable()
@@ -41,4 +42,5 @@ public class MenuButtonItemMenuController : MenuButtonController
             }
         }
     }
+    */
 }

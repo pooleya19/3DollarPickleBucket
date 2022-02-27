@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MenuButton : MonoBehaviour
 {
+    /*
     public MenuButtonController menuButtonController;
     public Animator animator;
     public int thisIndex;
@@ -76,4 +77,5 @@ public class MenuButton : MonoBehaviour
             }
         }
     }
+    */
 }
