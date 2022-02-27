@@ -30,10 +30,10 @@ public class SoulOrbit : MonoBehaviour
     {
         numEquipmentSlots = equipmentManager.currentEquipment.Length;
         int numEquippedSouls = inventorySystem.inventory.Count; //equipmentManager.getNumEquippedSouls();
-        Debug.Log("Num: " + numEquippedSouls);
+        //Debug.Log("Num: " + numEquippedSouls);
         if (numOrbitingSouls != numEquippedSouls)
         {
-            Debug.Log("Fixing");
+            //Debug.Log("Fixing");
             //Update orbitting souls
             for (int i = 0; i < orbitingSouls.Count; i++) Destroy(orbitingSouls[i]);
             orbitingSouls.Clear();
@@ -49,7 +49,7 @@ public class SoulOrbit : MonoBehaviour
                 orbitingSouls.Add(soul);
             }
         }
-        Debug.Log("Equipped: " + numEquippedSouls);
+        //Debug.Log("Equipped: " + numEquippedSouls);
         for (int i = 0; i < numEquippedSouls; i++)
         {
             GameObject soul = orbitingSouls[i];
