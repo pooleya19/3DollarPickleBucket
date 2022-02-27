@@ -148,6 +148,7 @@ public class Character : MonoBehaviour
             Debug.Log("i was pressed");
             if(menuIsOn)
             {
+                //Turn every single menu off
                 statsMenu.gameObject.SetActive(false);
                 soulsMenu.gameObject.SetActive(false);
                 menuIsOn = false;
@@ -164,7 +165,7 @@ public class Character : MonoBehaviour
                     //Debug.Log("value: " + value);
                     field.text = value;       
                 }
-
+                //Only these two menus turn on
                 statsMenu.gameObject.SetActive(true);
                 soulsMenu.gameObject.SetActive(true);
                 menuIsOn = true;

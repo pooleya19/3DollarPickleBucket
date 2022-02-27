@@ -278,6 +278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Logan's Character
       objectReference: {fileID: 0}
+    - target: {fileID: 7729740358928299636, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1290
+      objectReference: {fileID: 0}
     - target: {fileID: 9180720036315126143, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
       propertyPath: menu
       value: 
@@ -289,7 +293,7 @@ PrefabInstance:
     - target: {fileID: 9180720036315126143, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
       propertyPath: soulsMenu
       value: 
-      objectReference: {fileID: 517237191}
+      objectReference: {fileID: 1844142463}
     - target: {fileID: 9180720036315126143, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
       propertyPath: statsMenu
       value: 
@@ -450,11 +454,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6661c5e8e03386b4eaea1b19c4a2f1a8, type: 3}
---- !u!1 &517237191 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9102124766633465025, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
-  m_PrefabInstance: {fileID: 105017666}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &842073955 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2551095359303490947, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
@@ -860,6 +859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c66d1a99a1cf77f45ada6539b30b24c1, type: 3}
+--- !u!1 &1844142463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8952969612999404271, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
+  m_PrefabInstance: {fileID: 105017666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1912832551
 GameObject:
   m_ObjectHideFlags: 0
