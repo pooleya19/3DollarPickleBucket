@@ -85,11 +85,9 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             pickupable.TryGetComponent<ItemObject>(out ItemObject item);
-            if ((transform.position - item.transform.position).sqrMagnitude < 25.0f)
+            if ((transform.position - item.transform.position).sqrMagnitude < 4.0f)
             {
                 item.OnHandlePickupItem();
-                //itemController.SetTargetPosition(item.transform);
-                //itemController.Pickup();
             }
         }
 
