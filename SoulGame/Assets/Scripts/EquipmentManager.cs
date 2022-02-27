@@ -7,7 +7,8 @@ public class EquipmentManager : MonoBehaviour
     #region Singleton
     public static EquipmentManager instance;
     public int numOfSouls = 4;
- 
+    private int numEquippedSouls = 0;
+
     void Awake()
     {
         if (instance == null)
@@ -26,7 +27,7 @@ public class EquipmentManager : MonoBehaviour
     public Equipment[] currentEquipment;
     public delegate void OnEquipmentChangedCallback();
     public OnEquipmentChangedCallback onEquipmentChangedCallback;
-    
+
     private void Start()
     {
         currentEquipment = new Equipment[numOfSouls];
@@ -35,35 +36,41 @@ public class EquipmentManager : MonoBehaviour
     public void Equip(Equipment newItem)
     {
         int currLength = currentEquipment.Length;
-        if(currLength >= numOfSouls)
+        if (currLength >= numOfSouls)
         {
             Application.Quit();
         }
         else
         { //FIXME: Verify
             currentEquipment[currLength] = newItem;
- 
+
             StatusManager.instance.UpdateCharacterStatus(newItem, true);
- 
-            onEquipmentChangedCallback.Invoke();    
+
+            onEquipmentChangedCallback.Invoke();
+            numEquippedSouls++;
         }
     }
 
     public void Unequip(Equipment newItem)
     {
         int currLength = currentEquipment.Length;
-        if(currLength == 0)
+        if (currLength == 0)
         {
             Application.Quit();
         }
         else
         { //FIXME: Verify
             currentEquipment[currLength] = newItem;
- 
+
             StatusManager.instance.UpdateCharacterStatus(newItem, false);
- 
-            onEquipmentChangedCallback.Invoke();    
+
+            onEquipmentChangedCallback.Invoke();
+            numEquippedSouls--;
         }
     }
 
+    public int getNumEquippedSouls()
+    {
+        return numEquippedSouls;
+    }
 }

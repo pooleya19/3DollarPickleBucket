@@ -8,6 +8,7 @@ public class InventoryItemData : ScriptableObject
     public string id;
     public string displayName;
     public Sprite icon;
+    public Color color;
     //public GameObject prefab;
 
     public void Use()
