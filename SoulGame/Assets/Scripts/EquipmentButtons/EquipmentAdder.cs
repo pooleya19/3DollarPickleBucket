@@ -34,7 +34,7 @@ public class EquipmentAdder : MonoBehaviour
         {
             if(equippedItems[currentEquipSlot] != null)
             {
-                fields[currentEquipSlot].text = temp.displayName;
+                soulFields[currentEquipSlot].text = temp.displayName;
                 ++currentEquipSlot;
             }
         }
@@ -52,6 +52,8 @@ public class EquipmentAdder : MonoBehaviour
         Debug.Log("Equipping to: " + equip);
         if (selecting) 
         { 
+            bool selecting = false;
+            Debug.Log("selecting is: " + selecting);
             //Get the current item
             List<InventoryItem> inventoryItems = currInventorySystem.GetInventory();
             InventoryItemData currItem = inventoryItems[inventoryPosition].data;
@@ -63,6 +65,41 @@ public class EquipmentAdder : MonoBehaviour
             currInventorySystem.Remove(currItem);
 
             //Make sure to display all changes
+            inventoryItems = currInventorySystem.GetInventory();
+            int currInventorySlot = 0;
+
+            foreach (InventoryItem temp in inventoryItems)
+            {
+                if (temp.data.IsEquipment())
+                {
+                    fields[currInventorySlot].text = temp.data.displayName;
+                    ++currInventorySlot;
+                }
+            }
+            while (currInventorySlot < 8)
+            {
+                fields[currInventorySlot].text = "Empty";
+                ++currInventorySlot;
+            }
+
+            Equipment[] equippedItems = currEquipManager.currentEquipment;
+            int currentEquipSlot = 0;
+
+            Debug.Log("Finished Moving");
+            foreach (Equipment temp in equippedItems)
+            {
+                if(equippedItems[currentEquipSlot] != null)
+                {
+                    soulFields[currentEquipSlot].text = temp.displayName;
+                    ++currentEquipSlot;
+                }
+                else
+                {
+                    soulFields[currentEquipSlot].text = "Empty";
+                    ++currentEquipSlot;
+                }
+            }
+            Debug.Log("Finished Moving");
         }
         else
         {
