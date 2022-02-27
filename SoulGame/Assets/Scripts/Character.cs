@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
 
-    public float runSpeed = 5.0f;
+    public float runSpeed = 5.5f;
     //public GameObject pickupable;
     public LayerMask inventoryItemMask;
     public float inventoryItemPickupRange = 1.0f;
@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     bool menuIsOn = true;
 
     public DashState dash_state = DashState.Ready;
-    public float dashSpeed = 3.0f;
+    public float dashSpeed = 2.5f;
     public Vector2 preDashVelocity;
     private float dashTime;
     public float startDashTime = 0.2f;
@@ -88,7 +88,7 @@ public class Character : MonoBehaviour
         {
             horizontal = Input.GetAxisRaw("Horizontal");
             vertical = Input.GetAxisRaw("Vertical");
-            body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+            body.velocity = new Vector2(horizontal, vertical).normalized * runSpeed;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

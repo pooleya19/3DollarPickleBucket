@@ -80,7 +80,6 @@ public class Blehnemy : EnemyBehavior
         }
         else if (state == EnemyState.CHARGE && chargeTimer > 0) {            
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            GetComponent<Rigidbody2D>().isKinematic = true;
 
             return EnemyState.CHARGE;
         }
