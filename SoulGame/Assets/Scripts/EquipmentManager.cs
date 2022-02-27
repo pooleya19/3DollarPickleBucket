@@ -68,7 +68,7 @@ public class EquipmentManager : MonoBehaviour
 
             StatusManager.instance.UpdateCharacterStatus(newItem, true);
 
-            onEquipmentChangedCallback.Invoke();
+            //onEquipmentChangedCallback.Invoke();
             numEquippedSouls++;
         }
     }
@@ -83,11 +83,31 @@ public class EquipmentManager : MonoBehaviour
         }
         else
         { //FIXME: Verify
-            currentEquipment[currLength] = newItem;
+            currentEquipment[currLength] = null;
 
             StatusManager.instance.UpdateCharacterStatus(newItem, false);
 
-            onEquipmentChangedCallback.Invoke();
+            //onEquipmentChangedCallback.Invoke();
+            numEquippedSouls--;
+        }
+    }
+
+    public void Unequip(Equipment newItem, int index)
+    {
+        Debug.Log("2.5");
+        int currLength = currentEquipment.Length;
+        if (currentEquipment[index] == null)
+        {
+            //Application.Quit();
+            Debug.Log("You have no soul :(");
+        }
+        else
+        { //FIXME: Verify
+            currentEquipment[index] = null;
+
+            StatusManager.instance.UpdateCharacterStatus(newItem, false);
+
+            //onEquipmentChangedCallback.Invoke();
             numEquippedSouls--;
         }
     }

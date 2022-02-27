@@ -43,6 +43,7 @@ public class EquipmentAdder : MonoBehaviour
 
     public void ClickSelect(int index)
     {
+        Debug.Log("You've clicked on an inventory Item");
         Debug.Log("Selected: " + index);
         inventoryPosition = index;
         selecting = true;
@@ -50,17 +51,17 @@ public class EquipmentAdder : MonoBehaviour
 
     public void ClickEquipment(int equip)
     {
-        Debug.Log("Equipping to: " + equip);
+        Debug.Log("starting selecting is: " + selecting);
         if (selecting) 
         { 
-            bool selecting = false;
-            Debug.Log("selecting is: " + selecting);
+            Debug.Log("Equipping to: " + equip);
+            selecting = false;
             //Get the current item
             List<InventoryItem> inventoryItems = currInventorySystem.GetInventory();
             InventoryItemData currItem = inventoryItems[inventoryPosition].data;
 
             //Add it to equipment
-            //FIXME: make sure to check if there is an equipment there
+            //FIXME: implement a system where it replaces the soul thats currently at that slot
             currEquipManager.Equip((Equipment) currItem, equip);
 
             //Remove it from items
@@ -103,15 +104,63 @@ public class EquipmentAdder : MonoBehaviour
             }
 
             currCharacter.UpdateCharacterStatus();
+            Debug.Log("ending selecting is: " + selecting);
             Debug.Log("Finished Moving");
         }
         else
         {
+            Debug.Log("Unequipping from: " + equip);
             //Get current item
-
+            
+            Equipment[] equippedItems = currEquipManager.currentEquipment;
+            List<InventoryItem> inventoryItems = currInventorySystem.GetInventory();
+            Equipment currItem = equippedItems[equip];
+            
             //remove it from equipment
-
+            currEquipManager.Unequip(currItem, equip);
+            
             //add it to items
+            currInventorySystem.Add(currItem);
+
+            //Update Stats/Inventory window
+            inventoryItems = currInventorySystem.GetInventory();
+            int currInventorySlot = 0;
+            
+            foreach (InventoryItem temp in inventoryItems)
+            {
+                if (temp.data.IsEquipment())
+                {
+                    fields[currInventorySlot].text = temp.data.displayName;
+                    ++currInventorySlot;
+                }
+            }
+            while (currInventorySlot < 8)
+            {
+                fields[currInventorySlot].text = "Empty";
+                ++currInventorySlot;
+            }
+
+            equippedItems = currEquipManager.currentEquipment;
+            int currentEquipSlot = 0;
+
+            while (currentEquipSlot < 4)
+            {
+                Equipment temp = equippedItems[currentEquipSlot];
+                if(equippedItems[currentEquipSlot] != null)
+                {
+                    soulFields[currentEquipSlot].text = temp.displayName;
+                    ++currentEquipSlot;
+                }
+                else
+                {
+                    soulFields[currentEquipSlot].text = "Empty";
+                    ++currentEquipSlot;
+                }
+            }
+
+            currCharacter.UpdateCharacterStatus();
+            Debug.Log("ending selecting is: " + selecting);
+            Debug.Log("Finished Moving");
         }
     }
 }
