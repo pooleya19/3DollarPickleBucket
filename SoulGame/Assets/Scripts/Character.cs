@@ -6,7 +6,9 @@ public class Character : MonoBehaviour
 {
 
     public float runSpeed = 5.0f;
-    public GameObject pickupable;
+    //public GameObject pickupable;
+    public LayerMask inventoryItemMask;
+    public float inventoryItemPickupRange = 1.0f;
     Rigidbody2D body;
     float horizontal;
     float vertical;
@@ -84,10 +86,36 @@ public class Character : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            pickupable.TryGetComponent<ItemObject>(out ItemObject item);
-            if ((transform.position - item.transform.position).sqrMagnitude < 4.0f)
+            Collider2D[] rangeChecks = Physics2D.OverlapCircleAll(transform.position, inventoryItemPickupRange, inventoryItemMask);
+            if (rangeChecks.Length > 0)
             {
-                item.OnHandlePickupItem();
+                //There is at least 1 item to pick up
+                Transform closestTransform = rangeChecks[0].transform;
+                float closestDistance = -1;
+                //Find closest item
+                for (int i = 0; i < rangeChecks.Length; i++)
+                {
+                    Transform target = rangeChecks[i].transform;
+                    Vector2 targetPosition = new Vector2(target.position.x, target.position.y);
+                    Vector2 position = new Vector2(transform.position.x, transform.position.y);
+                    Vector2 toTarget = (targetPosition - position);
+                    float distance = toTarget.magnitude;
+                    if (closestDistance == -1)
+                    {
+                        closestTransform = target;
+                        closestDistance = distance;
+                    }
+                    else if (distance < closestDistance)
+                    {
+                        closestTransform = target;
+                        closestDistance = distance;
+                    }
+                }
+                if (closestDistance != -1)
+                {
+                    closestTransform.TryGetComponent<ItemObject>(out ItemObject item);
+                    item.OnHandlePickupItem();
+                }
             }
         }
 

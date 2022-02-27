@@ -8,14 +8,14 @@ public class InventoryItemData : ScriptableObject
     public string id;
     public string displayName;
     public Sprite icon;
-    public GameObject prefab;
-    
+    //public GameObject prefab;
+
     public void Use()
     {
         //this may be virtual
         // this function is supposed to be overriden
     }
- 
+
     public void Drop()
     {
         //may be virtual
