@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     Rigidbody2D body;
     float horizontal;
     float vertical;
+    bool menuIsOn = true;
 
     public DashState dash_state = DashState.Ready;
     public float dashSpeed = 3.0f;
@@ -23,10 +24,15 @@ public class Character : MonoBehaviour
     public GameObject dash_effect;
 
     public GameObject fire_ball;
+    public GameObject statsMenu;
+    public GameObject soulsMenu;
 
     // Start is called before the first frame update
     void Start()
     {
+        statsMenu.gameObject.SetActive(false);
+        soulsMenu.gameObject.SetActive(false);
+        menuIsOn = false;
         body = GetComponent<Rigidbody2D>();
         //fire_ball = (GameObject)Resources.Load("Assets/Prefabs/Fireball.prefab");
         dashTime = startDashTime;
@@ -132,6 +138,22 @@ public class Character : MonoBehaviour
         {
             GameObject projectile = Instantiate(fire_ball, transform.position, Quaternion.identity);
             projectile.transform.localScale = new Vector3(3, 3, 1);
+        }
+        if (Input.GetKeyDown("i"))
+        {
+            Debug.Log("i was pressed");
+            if(menuIsOn)
+            {
+                statsMenu.gameObject.SetActive(false);
+                soulsMenu.gameObject.SetActive(false);
+                menuIsOn = false;
+            }
+            else if (!menuIsOn)
+            {
+                statsMenu.gameObject.SetActive(true);
+                soulsMenu.gameObject.SetActive(true);
+                menuIsOn = true;
+            }
         }
     }
 
