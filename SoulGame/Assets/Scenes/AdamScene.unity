@@ -332,6 +332,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7373575984064065011, guid: aea8092769e460643acb2c4087ee341c, type: 3}
+      propertyPath: dash_effect
+      value: 
+      objectReference: {fileID: 6543099919568370379, guid: 872808a499f36eb479ed227030995709, type: 3}
     - target: {fileID: 8010066674694296322, guid: aea8092769e460643acb2c4087ee341c, type: 3}
       propertyPath: m_Name
       value: Character
@@ -2736,7 +2740,8 @@ MonoBehaviour:
   MVSPRange: {x: 0, y: 0}
   ATKSPRange: {x: 0, y: 0}
   highAlertTimer: 5
-  rangeAttackPlayer: 1
+  chargeTimer: 3
+  rangeAttackPlayer: 2
   rangeFindPlayer: 2
   rangeLosePlayer: 4
   idleFidgetDelayRange: {x: 1, y: 8}
@@ -2755,6 +2760,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   canSeePlayer: 0
+  fire_ball: {fileID: 5470195683543155620, guid: f3f11033d2006f64b84b4f6bb1f9e402, type: 3}
 --- !u!61 &1777566826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2789,7 +2795,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777566824}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2878,7 +2884,7 @@ GameObject:
   - component: {fileID: 2076225626}
   - component: {fileID: 2076225628}
   - component: {fileID: 2076225627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Blehnemy : EnemyBehavior
 {
-    public float highAlertTimer = 5.0f;
+    public float highAlertTimer = 4.0f;
+    public float chargeTimer = 3.0f;
     
-    public float rangeAttackPlayer = 1.0f;
+    public float rangeAttackPlayer = 4.0f;
     public float rangeFindPlayer = 2.0f;
     public float rangeLosePlayer = 4.0f;
 
@@ -34,6 +35,8 @@ public class Blehnemy : EnemyBehavior
     
     public bool canSeePlayer;
 
+    public GameObject fire_ball;
+
     public override void action_START() {
         Debug.Log("transform.forward");
         StartCoroutine(FOVRoutine());
@@ -55,14 +58,33 @@ public class Blehnemy : EnemyBehavior
 
     public override EnemyState getState() {
         if (highAlertTimer > 0) {
-                highAlertTimer -= Time.deltaTime;
+            highAlertTimer -= Time.deltaTime;
         }
+
+        if (chargeTimer > 0) {
+            chargeTimer -= Time.deltaTime;
+        }
+
         //Debug.Log(state);
         Vector2 playerPosition = new Vector2(playerTransform.position.x, playerTransform.position.y);
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
         float distance = Vector2.Distance(position, playerPosition);
+        Debug.Log(distance <= rangeAttackPlayer);
+        Debug.Log(distance <= rangeAttackPlayer && state == EnemyState.PURSUE);
+        if (distance <= rangeAttackPlayer && state == EnemyState.PURSUE)
+        {
+            chargeTimer = 3.0f;
+            spriteRenderer.color = Color.HSVToRGB(0, 0.7f, 0.0f);
 
-        if (distance <= rangeAttackPlayer)
+            return EnemyState.CHARGE;
+        }
+        else if (state == EnemyState.CHARGE && chargeTimer > 0) {            
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Rigidbody2D>().isKinematic = true;
+
+            return EnemyState.CHARGE;
+        }
+        else if (state == EnemyState.CHARGE && chargeTimer <= 0)
         {
             return EnemyState.ATTACK;
         }
@@ -134,6 +156,10 @@ public class Blehnemy : EnemyBehavior
 
     public override void action_ATTACK()
     {
+        highAlertTimer = 4.0f;
+        radius = 5.0f;
+        state = EnemyState.HIGH_ALERT;
+        
         spriteRenderer.color = Color.HSVToRGB(0, 1.0f, 0.67f);
         //Debug.Log("ATTACK");
     }

@@ -76,7 +76,7 @@ public class RedEnemy : EnemyBehavior
         float currentTime = Time.time;
         if (currentTime - lastIdleFidgetTime > idleFidgetDelay)
         {
-            //Debug.Log("New Fidget");
+            Debug.Log("New Fidget");
             lastIdleFidgetTime = currentTime;
             idleFidgetDelay = Random.Range(idleFidgetDelayRange.x, idleFidgetDelayRange.y);
             Vector2 nextFidgetDirection = Random.insideUnitCircle;
