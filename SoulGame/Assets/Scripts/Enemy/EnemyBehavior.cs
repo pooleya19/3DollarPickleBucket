@@ -9,10 +9,12 @@ public abstract class EnemyBehavior : MonoBehaviour
     public Vector2 MVSPRange;
     public Vector2 ATKSPRange;
 
-    public Vector2 spawnPoint;
+    protected Vector2 spawnPoint;
 
-    public GameObject player;
-    public Transform playerTransform;
+    protected GameObject player;
+    protected Transform playerTransform;
+
+    protected EnemyState state;
 
     public enum EnemyState
     {
@@ -30,7 +32,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     void Update()
     {
         playerTransform = player.transform;
-        EnemyState state = getState();
+        state = getState();
         switch (state)
         {
             case (EnemyState.IDLE):
