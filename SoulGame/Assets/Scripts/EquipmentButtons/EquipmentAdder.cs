@@ -9,6 +9,7 @@ public class EquipmentAdder : MonoBehaviour
     public InventorySystem currInventorySystem;
     public EquipmentManager currEquipManager;
     public List<TextMeshProUGUI> fields;
+    public List<TextMeshProUGUI> soulFields;
     bool selecting = false;
     int inventoryPosition;
 
@@ -23,6 +24,18 @@ public class EquipmentAdder : MonoBehaviour
             {
                 fields[currInventorySlot].text = temp.data.displayName;
                 ++currInventorySlot;
+            }
+        }
+
+        Equipment[] equippedItems = currEquipManager.currentEquipment;
+        int currentEquipSlot = 0;
+
+        foreach (Equipment temp in equippedItems)
+        {
+            if(equippedItems[currentEquipSlot] != null)
+            {
+                fields[currentEquipSlot].text = temp.displayName;
+                ++currentEquipSlot;
             }
         }
     }
@@ -48,6 +61,8 @@ public class EquipmentAdder : MonoBehaviour
 
             //Remove it from items
             currInventorySystem.Remove(currItem);
+
+            //Make sure to display all changes
         }
         else
         {
