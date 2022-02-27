@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9180720036315126143, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
       propertyPath: inventoryItemPickupRange
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
