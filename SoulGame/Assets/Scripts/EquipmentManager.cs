@@ -51,6 +51,24 @@ public class EquipmentManager : MonoBehaviour
         }
     }
 
+    public void Equip(Equipment newItem, int index)
+    {
+        int currLength = currentEquipment.Length;
+        if (currLength >= numOfSouls)
+        {
+            Application.Quit();
+        }
+        else
+        { //FIXME: Verify
+            currentEquipment[index] = newItem;
+
+            StatusManager.instance.UpdateCharacterStatus(newItem, true);
+
+            onEquipmentChangedCallback.Invoke();
+            numEquippedSouls++;
+        }
+    }
+
     public void Unequip(Equipment newItem)
     {
         int currLength = currentEquipment.Length;

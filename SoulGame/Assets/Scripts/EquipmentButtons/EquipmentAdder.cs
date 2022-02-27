@@ -7,8 +7,10 @@ using System;
 public class EquipmentAdder : MonoBehaviour
 {
     public InventorySystem currInventorySystem;
+    public EquipmentManager currEquipManager;
     public List<TextMeshProUGUI> fields;
     bool selecting = false;
+    int inventoryPosition;
 
     private void OnEnable() {
 
@@ -27,19 +29,31 @@ public class EquipmentAdder : MonoBehaviour
 
     public void ClickSelect(int index)
     {
-        int invPos = index;
+        inventoryPosition = index;
         selecting = true;
     }
 
     public void ClickEquipment(int equip)
     {
         if (selecting) 
-        {
-            
+        { 
+            //Get the current item
+            List<InventoryItem> inventoryItems = currInventorySystem.GetInventory();
+            InventoryItemData currItem = inventoryItems[inventoryPosition].data;
+
+            //Add it to equipment
+            currEquipManager.Equip((Equipment) currItem, equip);
+
+            //Remove it from items
+            currInventorySystem.Remove(currItem);
         }
         else
         {
+            //Get current item
 
+            //remove it from equipment
+
+            //add it to items
         }
     }
 }
