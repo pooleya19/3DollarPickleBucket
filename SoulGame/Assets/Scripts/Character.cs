@@ -27,15 +27,19 @@ public class Character : MonoBehaviour
 
     public GameObject fire_ball;
     public GameObject statsMenu;
-    public GameObject soulsMenu;
+    public GameObject optionMenu;
     public StatsChar currPlayerStatus;
     public List<TextMeshProUGUI> fields;
+    public List<GameObject> nonStartupLists;
 
     // Start is called before the first frame update
     void Start()
     {
         statsMenu.gameObject.SetActive(false);
-        soulsMenu.gameObject.SetActive(false);
+        optionMenu.gameObject.SetActive(false);
+        foreach (GameObject currList in nonStartupLists) {
+            currList.gameObject.SetActive(false);
+        }
         menuIsOn = false;
         body = GetComponent<Rigidbody2D>();
         //fire_ball = (GameObject)Resources.Load("Assets/Prefabs/Fireball.prefab");
@@ -150,7 +154,10 @@ public class Character : MonoBehaviour
             {
                 //Turn every single menu off
                 statsMenu.gameObject.SetActive(false);
-                soulsMenu.gameObject.SetActive(false);
+                optionMenu.gameObject.SetActive(false);
+                    foreach (GameObject currList in nonStartupLists) {
+                        currList.gameObject.SetActive(false);
+                    }
                 menuIsOn = false;
             }
             else if (!menuIsOn)
@@ -167,7 +174,7 @@ public class Character : MonoBehaviour
                 }
                 //Only these two menus turn on
                 statsMenu.gameObject.SetActive(true);
-                soulsMenu.gameObject.SetActive(true);
+                optionMenu.gameObject.SetActive(true);
                 menuIsOn = true;
             }
         }
