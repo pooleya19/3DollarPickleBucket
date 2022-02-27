@@ -159,9 +159,9 @@ public class Character : MonoBehaviour
                 foreach (TextMeshProUGUI field in fields)
                 {
                     string value = fieldsType.GetField(field.name).GetValue(StatusManager.instance.playerStatus).ToString();
-                    Debug.Log("field type" + field.name);
-                    Debug.Log("field " + field.name);
-                    Debug.Log("value: " + value);
+                    //Debug.Log("field type" + field.name);
+                    //Debug.Log("field " + field.name);
+                    //Debug.Log("value: " + value);
                     field.text = value;       
                 }
 
