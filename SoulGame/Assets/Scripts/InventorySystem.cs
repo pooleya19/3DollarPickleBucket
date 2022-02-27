@@ -62,5 +62,9 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
+public List<InventoryItem> GetInventory()
+{
+    return inventory;
+}
     
 }

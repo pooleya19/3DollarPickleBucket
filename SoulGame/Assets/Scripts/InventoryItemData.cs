@@ -21,4 +21,9 @@ public class InventoryItemData : ScriptableObject
         //may be virtual
         //InventorySystem.instance.RemoveItem(this); //InventorySystem was Inventory
     }
+
+    virtual public bool IsEquipment()
+    {
+        return false;
+    }
 }

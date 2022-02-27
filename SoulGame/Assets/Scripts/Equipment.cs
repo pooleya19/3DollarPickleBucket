@@ -10,6 +10,11 @@ public class Equipment : InventoryItemData
     public int defModifier;
     public int hpModifier;
     public int spdModifier;
+
+    override public bool IsEquipment()
+    {
+        return true;
+    }
     /*
     public override void Use()
     {
