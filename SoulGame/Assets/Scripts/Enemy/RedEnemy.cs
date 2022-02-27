@@ -11,7 +11,6 @@ public class RedEnemy : EnemyBehavior
     public Vector2 idleFidgetDelayRange = new Vector2(1, 8);
     public Vector2 idleFidgetDistanceRange = new Vector2(0, 2);
     public float minFidgetThreshold = 0.1f;
-    public float maxDistanceFromSpawnPoint = 2.0f;
 
     float lastIdleFidgetTime = 0;
     float idleFidgetDelay = 0;
@@ -59,6 +58,11 @@ public class RedEnemy : EnemyBehavior
         {
             return EnemyState.PURSUE;
         }
+        else if (state == EnemyState.PURSUE)
+        {
+            action_LOSTPLAYER();
+            return EnemyState.IDLE;
+        }
         else
         {
             return EnemyState.IDLE;
@@ -67,6 +71,7 @@ public class RedEnemy : EnemyBehavior
 
     public override void action_IDLE()
     {
+
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
         float currentTime = Time.time;
         if (currentTime - lastIdleFidgetTime > idleFidgetDelay)
@@ -74,18 +79,14 @@ public class RedEnemy : EnemyBehavior
             Debug.Log("New Fidget");
             lastIdleFidgetTime = currentTime;
             idleFidgetDelay = Random.Range(idleFidgetDelayRange.x, idleFidgetDelayRange.y);
-            //Choose next targetPosition
-            while (true)
-            {
-                Vector2 nextFidgetDirection = Random.insideUnitCircle;
-                nextFidgetDirection.Normalize();
-                targetPosition = position + nextFidgetDirection * Random.Range(idleFidgetDistanceRange.x, idleFidgetDistanceRange.y);
-                if (Vector2.Distance(targetPosition, spawnPoint) <= maxDistanceFromSpawnPoint) break;
-            }
+            Vector2 nextFidgetDirection = Random.insideUnitCircle;
+            nextFidgetDirection.Normalize();
+            targetPosition = spawnPoint + nextFidgetDirection * Random.Range(idleFidgetDistanceRange.x, idleFidgetDistanceRange.y);
         }
         spriteRenderer.color = Color.HSVToRGB(0, 0.4f, 0.67f);
         //Debug.Log("IDLE");
         moveToTargetPosition();
+
     }
 
     public override void action_PURSUE()
@@ -94,6 +95,11 @@ public class RedEnemy : EnemyBehavior
         Debug.Log("PURSUE");
         targetPosition = playerTransform.position;
         moveToTargetPosition();
+    }
+
+    public void action_LOSTPLAYER()
+    {
+        spawnPoint = new Vector2(transform.position.x, transform.position.y);
     }
 
     public override void action_ATTACK()
