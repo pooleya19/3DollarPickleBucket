@@ -85,9 +85,9 @@ public class EquipmentAdder : MonoBehaviour
             Equipment[] equippedItems = currEquipManager.currentEquipment;
             int currentEquipSlot = 0;
 
-            Debug.Log("Finished Moving");
-            foreach (Equipment temp in equippedItems)
+            while (currentEquipSlot < 4)
             {
+                Equipment temp = equippedItems[currentEquipSlot];
                 if(equippedItems[currentEquipSlot] != null)
                 {
                     soulFields[currentEquipSlot].text = temp.displayName;

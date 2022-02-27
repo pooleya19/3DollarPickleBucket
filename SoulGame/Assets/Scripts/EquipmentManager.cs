@@ -38,7 +38,8 @@ public class EquipmentManager : MonoBehaviour
         int currLength = currentEquipment.Length;
         if (currLength >= numOfSouls)
         {
-            Application.Quit();
+            //Application.Quit();
+            Debug.Log("Maximum number of souls has been reached");
         }
         else
         { //FIXME: Verify
@@ -56,7 +57,8 @@ public class EquipmentManager : MonoBehaviour
         int currLength = currentEquipment.Length;
         if (currLength >= numOfSouls)
         {
-            Application.Quit();
+            //Application.Quit();
+            Debug.Log("Maximum number of souls has been reached");
         }
         else
         { //FIXME: Verify
@@ -74,7 +76,8 @@ public class EquipmentManager : MonoBehaviour
         int currLength = currentEquipment.Length;
         if (currLength == 0)
         {
-            Application.Quit();
+            //Application.Quit();
+            Debug.Log("You have no soul :(");
         }
         else
         { //FIXME: Verify
