@@ -221,7 +221,7 @@ MonoBehaviour:
   runSpeed: 5
   inventoryItemMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   inventoryItemPickupRange: 1
   dash_state: 0
   dashSpeed: 2
@@ -229,8 +229,8 @@ MonoBehaviour:
   startDashTime: 0.2
   coolDown: 0
   hasCoolDown: 1
-  dash_effect: {fileID: 0}
-  fire_ball: {fileID: 0}
+  dash_effect: {fileID: 6543099919568370379, guid: 872808a499f36eb479ed227030995709, type: 3}
+  fire_ball: {fileID: 5470195683543155620, guid: f3f11033d2006f64b84b4f6bb1f9e402, type: 3}
   statsMenu: {fileID: 2304485861342717857}
   optionMenu: {fileID: 8952969612999404271}
   currPlayerStatus: {fileID: 11400000, guid: 7b410a1e58693604a8ac985a5290010c, type: 2}
@@ -411,7 +411,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cc07823da1b379443b399be83c0a21b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16abd081917d70c4baa2b57ee160999a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

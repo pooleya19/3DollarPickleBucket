@@ -10,20 +10,20 @@ public class StaticManagerController : MonoBehaviour
 
     private void Awake()
     {
-        StatusManager.instance.onStatusChangedCallback += UpdateFields;
+        //StatusManager.instance.onStatusChangedCallback += UpdateFields;
     }
 
     void UpdateFields()
     {
         Type fieldsType = typeof(StatsChar);
- 
+
         foreach (TextMeshProUGUI field in fields)
         {
             string value = fieldsType.GetField(field.name).GetValue(StatusManager.instance.playerStatus).ToString();
             Debug.Log("field type" + field.name);
             Debug.Log("field " + field.name);
             Debug.Log("value: " + value);
-            field.text = value;       
+            field.text = value;
         }
     }
 }
