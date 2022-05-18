@@ -401,6 +401,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Empty
       objectReference: {fileID: 0}
+    - target: {fileID: 9180720036315126143, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
+      propertyPath: impact
+      value: 
+      objectReference: {fileID: 8300000, guid: 3546fd1b868f2844f82bc4b10ed6757a, type: 3}
     - target: {fileID: 9198094716820163709, guid: e08e0a7e332187f488ebae1a6085c642, type: 3}
       propertyPath: m_text
       value: Empty

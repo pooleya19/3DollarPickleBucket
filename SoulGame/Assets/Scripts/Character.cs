@@ -39,6 +39,7 @@ public class Character : MonoBehaviour
     public StatsChar currPlayerStatus;
     public List<TextMeshProUGUI> fields;
     public List<GameObject> nonStartupLists;
+    public AudioClip impact;
 
     AudioSource audioData;
 
@@ -281,7 +282,9 @@ public class Character : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        audioData.Play(0);
+        //AudioSource audioData
+        //audioData.Play(0);
+        audioData.PlayOneShot(impact, 0.7F);
 
         if (col.gameObject.CompareTag("Enemy")) {
             Debug.Log("Hit Enemy");
